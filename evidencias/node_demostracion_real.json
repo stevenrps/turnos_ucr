@@ -1,0 +1,218 @@
+[
+  {
+    "prueba": "Node sirve el punto de entrada Flutter compilado",
+    "status": 200
+  },
+  {
+    "prueba": "Dos conexiones WS independientes",
+    "A": {
+      "tipo": "estado",
+      "revision": 0,
+      "turnos": []
+    },
+    "B": {
+      "tipo": "estado",
+      "revision": 0,
+      "turnos": []
+    }
+  },
+  {
+    "prueba": "POST",
+    "status": 201,
+    "body": {
+      "id": 1,
+      "numero": 1,
+      "cliente": "Ana Demo",
+      "estado": "pendiente",
+      "funcionario": null,
+      "creado_en": "2026-10-14T22:30:39.872Z",
+      "llamado_en": null,
+      "atendido_en": null,
+      "version": 0
+    }
+  },
+  {
+    "prueba": "Broadcast de creación sin GET ni recarga",
+    "A": {
+      "tipo": "estado",
+      "revision": 1,
+      "turnos": [
+        {
+          "id": 1,
+          "numero": 1,
+          "cliente": "Ana Demo",
+          "estado": "pendiente",
+          "funcionario": null,
+          "creado_en": "2026-10-14T22:30:39.872Z",
+          "llamado_en": null,
+          "atendido_en": null,
+          "version": 0
+        }
+      ]
+    },
+    "B": {
+      "tipo": "estado",
+      "revision": 1,
+      "turnos": [
+        {
+          "id": 1,
+          "numero": 1,
+          "cliente": "Ana Demo",
+          "estado": "pendiente",
+          "funcionario": null,
+          "creado_en": "2026-10-14T22:30:39.872Z",
+          "llamado_en": null,
+          "atendido_en": null,
+          "version": 0
+        }
+      ]
+    }
+  },
+  {
+    "prueba": "Carrera HTTP: solo uno tiene éxito",
+    "resultados": [
+      {
+        "status": 200,
+        "body": {
+          "id": 1,
+          "numero": 1,
+          "cliente": "Ana Demo",
+          "estado": "llamado",
+          "funcionario": "Funcionario A",
+          "creado_en": "2026-10-14T22:30:39.872Z",
+          "llamado_en": "2026-10-14T22:30:39.879Z",
+          "atendido_en": null,
+          "version": 1
+        }
+      },
+      {
+        "status": 409,
+        "body": {
+          "detail": "Otro funcionario modificó el turno. Estado actualizado."
+        }
+      }
+    ]
+  },
+  {
+    "prueba": "Ambos sockets reciben llamado",
+    "A": {
+      "tipo": "estado",
+      "revision": 2,
+      "turnos": [
+        {
+          "id": 1,
+          "numero": 1,
+          "cliente": "Ana Demo",
+          "estado": "llamado",
+          "funcionario": "Funcionario A",
+          "creado_en": "2026-10-14T22:30:39.872Z",
+          "llamado_en": "2026-10-14T22:30:39.879Z",
+          "atendido_en": null,
+          "version": 1
+        }
+      ]
+    },
+    "B": {
+      "tipo": "estado",
+      "revision": 2,
+      "turnos": [
+        {
+          "id": 1,
+          "numero": 1,
+          "cliente": "Ana Demo",
+          "estado": "llamado",
+          "funcionario": "Funcionario A",
+          "creado_en": "2026-10-14T22:30:39.872Z",
+          "llamado_en": "2026-10-14T22:30:39.879Z",
+          "atendido_en": null,
+          "version": 1
+        }
+      ]
+    }
+  },
+  {
+    "prueba": "PATCH atendido con fecha y hora",
+    "status": 200,
+    "body": {
+      "id": 1,
+      "numero": 1,
+      "cliente": "Ana Demo",
+      "estado": "atendido",
+      "funcionario": "Funcionario A",
+      "creado_en": "2026-10-14T22:30:39.872Z",
+      "llamado_en": "2026-10-14T22:30:39.879Z",
+      "atendido_en": "2026-10-14T22:30:39.887Z",
+      "version": 2
+    }
+  },
+  {
+    "prueba": "Reintento POST sin duplicación",
+    "status": 201,
+    "body": {
+      "id": 1,
+      "numero": 1,
+      "cliente": "Ana Demo",
+      "estado": "atendido",
+      "funcionario": "Funcionario A",
+      "creado_en": "2026-10-14T22:30:39.872Z",
+      "llamado_en": "2026-10-14T22:30:39.879Z",
+      "atendido_en": "2026-10-14T22:30:39.887Z",
+      "version": 2
+    }
+  },
+  {
+    "prueba": "GET después de reiniciar servidor conserva historial",
+    "status": 200,
+    "body": {
+      "revision": 3,
+      "turnos": [
+        {
+          "id": 1,
+          "numero": 1,
+          "cliente": "Ana Demo",
+          "estado": "atendido",
+          "funcionario": "Funcionario A",
+          "creado_en": "2026-10-14T22:30:39.872Z",
+          "llamado_en": "2026-10-14T22:30:39.879Z",
+          "atendido_en": "2026-10-14T22:30:39.887Z",
+          "version": 2
+        }
+      ]
+    }
+  },
+  {
+    "prueba": "Reconexión recibe estado completo",
+    "body": {
+      "tipo": "estado",
+      "revision": 3,
+      "turnos": [
+        {
+          "id": 1,
+          "numero": 1,
+          "cliente": "Ana Demo",
+          "estado": "atendido",
+          "funcionario": "Funcionario A",
+          "creado_en": "2026-10-14T22:30:39.872Z",
+          "llamado_en": "2026-10-14T22:30:39.879Z",
+          "atendido_en": "2026-10-14T22:30:39.887Z",
+          "version": 2
+        }
+      ]
+    }
+  },
+  {
+    "prueba": "Consecutivo persiste tras reinicio",
+    "status": 201,
+    "body": {
+      "id": 2,
+      "numero": 2,
+      "cliente": "Luis Demo",
+      "estado": "pendiente",
+      "funcionario": null,
+      "creado_en": "2026-10-14T22:30:39.906Z",
+      "llamado_en": null,
+      "atendido_en": null,
+      "version": 0
+    }
+  }
+]

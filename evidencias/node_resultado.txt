@@ -1,0 +1,11 @@
+Comando: npm test
+Entorno: Node.js 24.19.0
+10 pruebas; 10 aprobadas; 0 fallos; duración 531.692447 ms.
+
+Comando: npm run evidence
+11 evidencias reales verificadas sobre Node.js.
+Código de salida: 0.
+Archivo: node_demostracion_real.json.
+
+Dependencias: npm install completado; package-lock.json incluido.
+No se requiere Python para iniciar, probar ni demostrar esta versión.

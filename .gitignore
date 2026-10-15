@@ -1,0 +1,9 @@
+backend/node_modules/
+backend/data/
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+frontend/.dart_tool/
+frontend/build/
+frontend/.flutter-plugins-dependencies
+.env
